@@ -82,11 +82,7 @@ const initial = {
   };
 
   const player = new Player(initial.x, initial.y);
-  let allEnemies =[];
-   [block.y , block.y * 2 , block.y * 3].map(function(location){
-    enemy = new Enemy(-block.x, location, generateSpeed());
-    allEnemies.push(enemy);
-  });
+  let allEnemies =[block.y, block.y*2, block.y*3].map(location => new Enemy(-block.x, location, generateSpeed()));
   
   document.addEventListener("keyup", function(e) {
     const allowedKeys = {
