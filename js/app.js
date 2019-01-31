@@ -20,19 +20,19 @@ function youWin(obj) {
   obj.y = initial.y;
 }
 
-let Enemy = function(x, y, speed) {
+let Enemy = function (x, y, speed) {
   this.x = x;
   this.y = y;
   this.speed = speed;
   this.sprite = "images/Heart.png";
 };
 
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function (dt) {
   this.x += this.speed * dt;
   this.handleCollision();
 };
 
-Enemy.prototype.handleCollision = function() {
+Enemy.prototype.handleCollision = function () {
   if (this.x > block.x * 5) {
     this.x = -block.x;
     this.speed = generateSpeed();
@@ -49,21 +49,21 @@ Enemy.prototype.handleCollision = function() {
   }
 };
 
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-let Player = function(x, y) {
+let Player = function (x, y) {
   this.sprite = "images/char-horn-girl.png";
   this.x = x;
   this.y = y;
 };
 
-Player.prototype.update = function() {};
-Player.prototype.render = function() {
+Player.prototype.update = function () {};
+Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function(key) {
+Player.prototype.handleInput = function (key) {
   switch (key) {
     case "up":
       this.y > 0 ? (this.y = this.y - block.y) : (this.y = initial.y);
@@ -86,7 +86,7 @@ let allEnemies = [block.y, block.y * 2, block.y * 3].map(
   location => new Enemy(-block.x, location, generateSpeed())
 );
 
-document.addEventListener("keyup", function(e) {
+document.addEventListener("keyup", function (e) {
   const allowedKeys = {
     37: "left",
     38: "up",
